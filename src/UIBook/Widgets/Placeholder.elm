@@ -1,6 +1,6 @@
 module UIBook.Widgets.Placeholder exposing
     ( placeholder
-    , custom, withBackgroundColor, withForegroundColor, withHeight, withWidth, view
+    , custom, view, withHeight, withWidth, withColor, withBackgroundColor
     )
 
 {-| An utility Widget that serves as a placeholder for the content of sections in your chapters
@@ -25,12 +25,12 @@ You can also customize several aspects of the placeholder widget, including heig
         [ ( "Custom"
             , Placeholder.custom
                 |> Placeholder.withWidth 400.0
-                |> Placeholder.withForegroundColor "#FFFFFF"
+                |> Placeholder.withColor "#FFFFFF"
                 |> Placeholder.view
             )
         ]
 
-@docs custom, withBackgroundColor, withForegroundColor, withHeight, withWidth, view
+@docs custom, view, withHeight, withWidth, withColor, withBackgroundColor
 
 -}
 
@@ -45,14 +45,14 @@ type Props
     = Props { width : Maybe Float, height : Float, backgroundColor : String, foregroundColor : String }
 
 
-{-| A placeholder can substitute any content in a chapter section
+{-| Default placeholder widget.
 -}
 placeholder : Html msg
 placeholder =
     view custom
 
 
-{-| Builds a placeholder view with or without customized aspects
+{-| Finishes the creation of a custom placeholder.
 -}
 view : Props -> Html msg
 view (Props props) =
@@ -87,36 +87,36 @@ view (Props props) =
         []
 
 
-{-| Contains all the customs properties of the placeholder
+{-| Starts the creation of a custom placeholder.
 -}
 custom : Props
 custom =
     Props { width = Nothing, height = 40, backgroundColor = "#ffffff", foregroundColor = themeColor }
 
 
-{-| Sets a custom height for the placeholder
+{-| Create a placeholder with a custom height.
 -}
 withHeight : Float -> Props -> Props
 withHeight height (Props props) =
     Props { props | height = height }
 
 
-{-| Sets a custom width for the placeholder
+{-| Create a placeholder with a custom width.
 -}
 withWidth : Float -> Props -> Props
 withWidth width (Props props) =
     Props { props | width = Just width }
 
 
-{-| Sets a custom background color for the placeholder
+{-| Create a placeholder with a custom background color.
 -}
 withBackgroundColor : String -> Props -> Props
 withBackgroundColor color (Props props) =
     Props { props | backgroundColor = color }
 
 
-{-| Sets a custom foreground color for the placeholder
+{-| Create a placeholder with a custom color.
 -}
-withForegroundColor : String -> Props -> Props
-withForegroundColor color (Props props) =
+withColor : String -> Props -> Props
+withColor color (Props props) =
     Props { props | foregroundColor = color }

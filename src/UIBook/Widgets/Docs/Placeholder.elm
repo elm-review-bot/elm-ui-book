@@ -10,19 +10,29 @@ docs =
     chapter "Placeholder"
         |> withSections
             [ ( "Default", placeholder )
-            , ( "With custom width"
+            , ( "with custom width"
               , Placeholder.custom
                     |> Placeholder.withWidth 500
                     |> Placeholder.view
               )
-            , ( "With Custom Foreground Color"
+            , ( "With custom height"
               , Placeholder.custom
-                    |> Placeholder.withForegroundColor "#FF0000"
+                    |> Placeholder.withHeight 80
                     |> Placeholder.view
               )
-            , ( "With Custom Background and Foreground Colors"
+            , ( "With custom foreground Color"
               , Placeholder.custom
-                    |> Placeholder.withForegroundColor "#FFF"
+                    |> Placeholder.withColor "#FF0000"
+                    |> Placeholder.view
+              )
+            , ( "With custom background Color"
+              , Placeholder.custom
+                    |> Placeholder.withColor "#0000FF"
+                    |> Placeholder.view
+              )
+            , ( "With custom cackground and foreground colors"
+              , Placeholder.custom
+                    |> Placeholder.withColor "#FFF"
                     |> Placeholder.withBackgroundColor "#FF0000"
                     |> Placeholder.view
               )
